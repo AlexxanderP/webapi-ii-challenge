@@ -1,12 +1,12 @@
 const express = require("express");
 
-const dbRouter = require("./data/postsRouter");
+const postRouter = require("./data/postsRouter");
 
 const server = express();
 
 server.use(express.json());
 
-server.use("/api/posts", dbRouter);
+server.use("/api/posts", postRouter);
 
 server.get("/", (req, res) => {
   res.send(`
