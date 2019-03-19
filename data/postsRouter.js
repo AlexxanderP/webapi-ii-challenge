@@ -31,21 +31,15 @@ router.get("/", (req, res) => {
     });
 });
 
-// --------------------------------- DELETE -----------------------------------//
-router.delete("/:id", async (req, res) => {
-  try {
-    const count = await post.remove(req.params.id);
-    if (count > 0) {
-      res.status(200).json({ message: "The post cant sit with us!" });
-    } else {
-      res.status(404).json({ message: "Looked, didnt find nothing, fam..." });
-    }
-  } catch (error) {
-    console.log(error);
-    res.status(500).json({
-      message: "Tried to remove post, but it told me no..."
+// // --------------------------------- DELETE -----------------------------------//
+router.delete("/:id", (req, res) => {
+  db.remove(req.params.id)
+    .then(remove => {
+      res.status(204).end();
+    })
+    .catch(error => {
+      res.status(500).json("Homie beat me up, cant get it!");
     });
-  }
 });
 
 // --------------------------------- PUT -----------------------------------//
