@@ -10,7 +10,7 @@ server.use("/api/posts", postRouter);
 
 server.get("/", (req, res) => {
   res.send(`
-        <h1> Post </h1>
+        Server Active! Welcome :)
     `);
 });
 
