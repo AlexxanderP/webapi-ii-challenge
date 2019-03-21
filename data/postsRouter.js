@@ -47,7 +47,7 @@ router.get("/:id", (req, res) => {
 router.delete("/:id", (req, res) => {
   db.remove(req.params.id)
     .then(remove => {
-      res.status(204).end();
+      res.status(203).end();
     })
     .catch(error => {
       res.status(500).json("Homie beat me up, cant get it!");
@@ -63,7 +63,7 @@ router.put("/:id", (req, res) => {
       if (post) {
         if (title && contents) {
           db.update(req.params.id, req.body).then(post => {
-            res.status(200).json(req.body);
+            res.status(205).json(req.body);
           });
         } else {
           res.status(400).json({
